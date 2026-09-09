@@ -6,3 +6,7 @@ __pycache__/
 .ipynb_checkpoints/
 .DS_Store
 *.egg-info/
+
+# MLflow local tracking store (ephemeral, per-machine run history)
+mlruns/
+mlflow.db

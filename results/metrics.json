@@ -1,0 +1,37 @@
+{
+  "n_utterances": 60,
+  "vocab_size": 264,
+  "top_keyness_words": [
+    {
+      "word": "جلدی",
+      "keyness_ratio": 106.53,
+      "target_count": 21
+    },
+    {
+      "word": "فوراً",
+      "keyness_ratio": 56.28,
+      "target_count": 11
+    },
+    {
+      "word": "آئیں",
+      "keyness_ratio": 51.25,
+      "target_count": 10
+    },
+    {
+      "word": "بھیجیں",
+      "keyness_ratio": 41.2,
+      "target_count": 8
+    },
+    {
+      "word": "کریں",
+      "keyness_ratio": 36.18,
+      "target_count": 7
+    }
+  ],
+  "avg_token_count_by_urgency": {
+    "low": 12.47,
+    "medium": 13.13,
+    "high": 12.2,
+    "critical": 14.33
+  }
+}

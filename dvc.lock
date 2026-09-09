@@ -1,0 +1,35 @@
+schema: '2.0'
+stages:
+  analyze:
+    cmd: python scripts/run_analysis.py --corpus data/corpus.jsonl --results-dir
+      results
+    deps:
+    - path: data/corpus.jsonl
+      hash: md5
+      md5: 5b62dac4145b9d13e6834bbcfbca2bf5
+      size: 34049
+    - path: scripts/run_analysis.py
+      hash: md5
+      md5: adeaecb9f41340b81150742e53e00553
+      size: 6623
+    - path: src/corpus_analysis.py
+      hash: md5
+      md5: a15de1400978b029ec9f0bc3cb80f77c
+      size: 4147
+    outs:
+    - path: results/keyness_high_vs_low.png
+      hash: md5
+      md5: d6bdfdd30e06eadfdfa287a84cc0734a
+      size: 40520
+    - path: results/length_by_urgency.png
+      hash: md5
+      md5: 970fe52b6c28fcdaf3f4ba23283b50c3
+      size: 23168
+    - path: results/lexicon_features_by_urgency.png
+      hash: md5
+      md5: 10810daf2052986a01ff46b3e4e81455
+      size: 36820
+    - path: results/metrics.json
+      hash: md5
+      md5: 22a7f924f944e608ea31af37be7cf889
+      size: 666

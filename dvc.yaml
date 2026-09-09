@@ -1,0 +1,17 @@
+stages:
+  analyze:
+    cmd: python scripts/run_analysis.py --corpus data/corpus.jsonl --results-dir results
+    deps:
+      - data/corpus.jsonl
+      - src/corpus_analysis.py
+      - scripts/run_analysis.py
+    outs:
+      - results/length_by_urgency.png:
+          cache: false
+      - results/lexicon_features_by_urgency.png:
+          cache: false
+      - results/keyness_high_vs_low.png:
+          cache: false
+    metrics:
+      - results/metrics.json:
+          cache: false

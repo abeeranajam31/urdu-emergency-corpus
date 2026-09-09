@@ -57,11 +57,43 @@ urdu-emergency-corpus/
 ├── src/
 │   ├── preprocessing.py         lexicon-based auto-tagging
 │   └── corpus_analysis.py       tokenization, frequency, keyness, collocation
-├── results/                     generated charts (PNG)
+├── scripts/
+│   └── run_analysis.py          MLflow-tracked, scriptable version of the notebooks
+├── results/                     generated charts (PNG) + metrics.json
 ├── paper/
 │   └── research_report.md       full write-up
 ├── tests/                       pytest suite
-└── requirements.txt
+├── Dockerfile                   containerized analysis runner
+├── dvc.yaml / dvc.lock          reproducible pipeline definition
+├── requirements.txt
+└── requirements-mlops.txt       MLflow + DVC dependencies
+```
+
+## MLOps: tracking & reproducibility
+
+The notebooks remain the primary way to explore this analysis interactively. For a
+reproducible, trackable, non-interactive run of the same analysis (utterance length by
+urgency, lexicon-feature presence by urgency, keyness comparison), three tools wrap it:
+
+- **MLflow** (`scripts/run_analysis.py`) — logs corpus size, vocabulary size, per-urgency
+  average token counts, per-urgency feature presence rates, and the three generated
+  charts as run artifacts. Run `mlflow ui` to browse past runs.
+- **DVC** (`dvc.yaml`/`dvc.lock`) — defines the analysis as a reproducible pipeline
+  (`data/corpus.jsonl` + analysis code → charts + `results/metrics.json`). Run
+  `dvc repro` to re-run only when the corpus or code actually changed.
+- **Docker** — runs the analysis with zero local setup:
+
+```bash
+docker build -t uec-corpus .
+docker run --rm -v "$(pwd)/results:/app/results" uec-corpus
+```
+
+Or without Docker:
+
+```bash
+pip install -r requirements.txt -r requirements-mlops.txt
+python scripts/run_analysis.py --corpus data/corpus.jsonl --results-dir results
+mlflow ui   # inspect logged runs at http://localhost:5000
 ```
 
 ## Data note
