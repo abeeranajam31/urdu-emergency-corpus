@@ -13,6 +13,10 @@ low- from high-urgency communication.
 > (my AI safety evaluation platform) — different domain, different
 > methodology, no shared codebase, kept intentionally as its own repo.
 
+**Dataset on Hugging Face:** [`abeeranajam31/urdu-emergency-corpus`](https://huggingface.co/datasets/abeeranajam31/urdu-emergency-corpus)
+(loadable via `datasets.load_dataset`). Code, notebooks, and the full
+research report live here on GitHub.
+
 ## Research question
 
 Which linguistic features (temporal expressions, distress markers,
