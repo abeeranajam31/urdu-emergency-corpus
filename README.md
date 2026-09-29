@@ -96,6 +96,25 @@ python scripts/run_analysis.py --corpus data/corpus.jsonl --results-dir results
 mlflow ui   # inspect logged runs at http://localhost:5000
 ```
 
+## Inter-annotator agreement
+
+The manual labels currently come from one annotator. To measure how
+reliable they are, a second annotator labels the same utterances
+independently and `src/agreement.py` compares the two:
+
+```bash
+# 1. Blind sheet: text + gloss only, shuffled, no existing labels
+python -m src.agreement export --out data/annotator2_sheet.csv
+
+# 2. Second annotator fills the five label columns using
+#    data/annotation_schema.md, then:
+python -m src.agreement score --sheet data/annotator2_sheet.csv
+```
+
+This reports percent agreement and Cohen's kappa per field (plus a
+quadratic-weighted kappa for the ordinal urgency scale) to
+`results/agreement.json`, and lists the disagreeing IDs for adjudication.
+
 ## Data note
 
 **This is a researcher-constructed, simulated pilot corpus — not real

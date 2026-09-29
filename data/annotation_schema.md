@@ -53,7 +53,8 @@ Each of these fields is stored as `{"present": bool, "matches": [tokens]}`.
 
 - Urgency and speech-act labels come from a single annotator (the corpus
   author) at this pilot stage — no inter-annotator agreement has been
-  computed. See `paper/research_report.md` for the full limitations
+  computed yet. `src/agreement.py` provides the blind second-annotator
+  sheet and Cohen's kappa scoring for when a second pass is done. See `paper/research_report.md` for the full limitations
   discussion.
 - Lexicon-based tagging will miss morphological variants and synonyms not
   in the list; it is a screening tool, not a semantic parser.
